@@ -2,7 +2,7 @@
 
 - Joystick can be used for gaming, or other tasks. Works for all online games when ran as a python script
 
-- ***IMPORTANT*** Open Arduino and set the Baud Rate to 115000
+- ***IMPORTANT*** Open Arduino and set the Baud Rate to 115200
 
 -DO NOT have Arduino open while running the script as this will cause permission issues
 
