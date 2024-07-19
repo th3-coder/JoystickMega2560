@@ -1,8 +1,7 @@
 import serial
 import pydirectinput
 
-arduino = serial.Serial('COM4', 115200,
-                        timeout=.1)  # serial input from arduino. change COM port to wherever your arduino is connected
+arduino = serial.Serial('COM4', 115200, timeout=.1)  # serial input from arduino. change COM port to wherever your arduino is connected
 
 pydirectinput.PAUSE = 0
 

@@ -8,22 +8,25 @@ int JSButton;
 ezButton button(JoyStick_pin);
 
 void setup() {
- // for (int i = 0; i < 2; i++) {
-   // pinMode(JoyStick_pin, INPUT);
+  // for (int i = 0; i < 2; i++) {
+  // pinMode(JoyStick_pin, INPUT);
  
  button.setDebounceTime(50);
   
-  
+  /* - - - IMPORTANT - - - */
+  //set baud rate of arduino serial monitor to 115200
   Serial.begin(115200);
 }
 
 void loop() {
   button.loop();
-  
+  // TO CALIBRATE UNCOMMENT OUTPUT STATEMENTS FOR x & y on line 60
+  // Expirement until x and y are both 0 
   int x = analogRead(X_pin) - 507;  //read x direction value and -517 to bring back to around 0
   int y = analogRead(Y_pin) - 502;  //read y direction value and -512 to bring back to around 0
   
-  if (x < -22) {         //joystick has off set of +/-8 so this negates that
+  //change values inside if statements to change stick sensitivity
+  if (x < -22) {         
     xc = 0;             //turn analogue value into integer. 0, 1 or 2 depending on state
   } else if (x > 2) {   
     xc = 2;
@@ -39,6 +42,7 @@ void loop() {
     yc = 1;
   }
 
+  //initial button state set to 0;
   int buttonstates = 0;
   buttonstates = button.getState();
 
@@ -51,8 +55,13 @@ void loop() {
   Serial.print(yc);
   Serial.print(",");
   Serial.println((buttonstates));
+  
+  
+  /*
+  uncomment for CALIBRATION purpose
   Serial.println(x);
   Serial.println(y);
   delay(40);
+  */
 
 }
